@@ -1,14 +1,11 @@
 <template>
-  <Menu class="menu px-5" id="menu"/>
-  <Me class="px-5 px-5" id="me"/>
-  <Projects class="py-5 px-5" id="projects" @open-modal="openModal"/>
-  <About class="py-5 px-5" id="about"/>
-  <Modal id="modal"
-    v-if="modal.show" :show="modal.show"
-    @closeModal="closeModal"
-    :type="modal.type" :object="modal.object"/>
+  <Menu class="menu px-15" id="menu" @open-modal="openModal"/>
+  <Me class="px-5 px-15" id="me" @open-modal="openModal"/>
+  <Projects class="py-5 px-15" id="projects" @open-modal="openModal"/>
+  <About class="py-5 px-15" id="about" @open-modal="openModal"/>
+  <Modal id="modal" v-if="modal.show" :show="modal.show" @closeModal="closeModal" :type="modal.type" :object="modal.object"/>
   <Blog id="blog"/>
-  <Footer class="px-5" id="footer"/>
+  <Footer class="px-15" id="footer" @open-modal="openModal"/>
 </template>
 
 <script>
@@ -29,7 +26,9 @@ export default {
       modal: {
         show: false,
         type: '',
-        object: {},
+        object: {
+          src: '',
+        },
       },
     };
   },
@@ -45,7 +44,9 @@ export default {
   methods: {
     openModal(type, object) {
       this.modal.type = type;
-      this.modal.object = object;
+      if (this.modal.object !== undefined) this.modal.object = object;
+      if (this.modal.type === 'project') this.modal.object.src = 'popup-2.jpg';
+      if (this.modal.type === 'contact') this.modal.object.src = 'popup-1.jpg';
       this.modal.show = true;
       // $('body').style.overflow = 'hidden'; // A debug
       document.getElementsByTagName('body')[0].style.overflow = 'hidden';

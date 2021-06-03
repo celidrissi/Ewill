@@ -49,7 +49,15 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "max-len": ["error", { "code": 200 }],
+      "ignoreTrailingComments": 0,
+      "ignoreComments": 0,
+      "ignoreStrings": 0,
+      "ignoreTemplateLiterals": 0,
+      "ignoreRegExpLiterals": 0,
+      "ignoreUrls": 0
+    }
   },
   "browserslist": [
     "> 1%",

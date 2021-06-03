@@ -1,4 +1,4 @@
-<template>
+s<template>
     <div class="row" id="footer">
         <div class="col" id="footer_left">
             © 2021 - El idrissi Chafik |
@@ -28,7 +28,7 @@
                 />
         </div>
         <div class="col" id="footer_right">
-            <div class="w-unset btn-round" id="footer_contact_btn">
+            <div class="w-unset btn-round" id="footer_contact_btn" @click="$emit('open-modal', 'contact')">
                 CONTACT
             </div>
         </div>

@@ -23,7 +23,7 @@
                 Phasellus porttitor finibus neque vel vehicula.
             </p>
             <div id="about_contact">
-                <div class="w-unset btn-round" id="about_contact_btn">
+                <div class="w-unset btn-round" id="about_contact_btn" @click="$emit('open-modal', 'contact')">
                     CONTACT
                 </div>
             </div>

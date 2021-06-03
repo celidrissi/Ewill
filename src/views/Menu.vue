@@ -26,7 +26,7 @@
                 <div class="col w-unset" id="menu_blog">
                     BLOG
                 </div>
-                <div class="col w-unset btn-round" id="menu_contact">
+                <div class="col w-unset btn-round" id="menu_contact" @click="$emit('open-modal', 'contact')">
                     CONTACT
                 </div>
             </div>

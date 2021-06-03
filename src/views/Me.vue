@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div id="me_contact">
-                <div class="w-unset btn-round" id="me_contact_btn">
+                <div class="w-unset btn-round" id="me_contact_btn" @click="$emit('open-modal', 'contact')">
                     CONTACT
                 </div>
             </div>
