@@ -1,5 +1,5 @@
 <template>
-    <div class="row" v-on:click.tab.capture="closeModal($event)">
+    <div class="row">
         <div class="row">
             <div id="project_filter">
               <div id="project_filter_all" @click="show('All')">Tous</div>
@@ -13,7 +13,7 @@
             <div v-for="project in projects" :key="'project' + project.id"
                 class="col col-xs-12 col-sm-12 col-md-4"
                 :class="{ 'd-none' : !project.show }">
-                <div class="card" @click="openModal(project.id - 1)">
+                <div class="card" @click="$emit('open-modal', 'project', projects[project.id - 1])">
                     <img
                         :src="require('@/assets/images/projects/' + project.src)"
                         class="card-img-top"
@@ -27,31 +27,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade row"
-          v-if="modal.show"
-          :class="{ show : modal.show}"
-          :style="{display: (modal.show && 'flex')|| 'none'}"
-        >
-          <div class="col-8" id="modal_left">
-            <img
-              :src="require('@/assets/images/projects/' + modal.src)"
-              class="card-img-top"
-              :alt="modal.title"
-              >
-          </div>
-          <div class="col-4" id="modal_right">
-            BLABLA
-          </div>
-        </div>
-
-        <div class="modal-backdrop fade"
-          v-if="modal.show"
-          :class="{ show : modal.show}"
-          :style="{ display : (modal.show && 'block')|| 'none'}"
-          >
         </div>
     </div>
 </template>
@@ -176,18 +151,6 @@ export default {
         } else if (this.projects[i].id === index + 1) this.projects[i].show = true;
       }
     },
-    openModal(index) {
-      console.log('open');
-      this.modal.projectID = index;
-      this.modal.src = this.projects[index].src;
-      this.modal.title = this.projects[index].tilte;
-      this.modal.show = true;
-    },
-    closeModal(event) {
-      console.log(event);
-      if(event.)
-      this.modal.show = false;
-    },
   },
 };
 </script>
@@ -199,12 +162,6 @@ export default {
     .card:hover{
       transform: scale(1.05);
       box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-    }
-    .modal{
-      align-items: center;
-    }
-    #modal_right{
-      background: white;
     }
     #project_filter{
       text-align: center;
