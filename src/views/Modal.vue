@@ -3,7 +3,7 @@
     <div class="modal fade row show" :style="{display: (show && 'flex')|| 'none'}">
         <img v-if="type === 'project'" :src="require('@/assets/images/' + object.src)" class="col-8" id="modal_left" :alt="object.title" @load="setH()">
         <div class="col-4 px-4" id="modal_right">
-          <div id="modal_right_top">
+          <div v-if="type === 'project'" id="modal_right_top">
             <img id="modal_close" @click="$emit('close-modal')" :src="require('@/assets/images/icons/002-close.png')" alt="Close Button">
           </div>
           <div id="modal_right_bottom">
@@ -54,7 +54,10 @@
             </template>
           </div>
         </div>
-        <img v-if="type === 'contact'" :src="require('@/assets/images/popup-1.jpg')" class="col-8" id="modal_right_contact" alt="Contact Image" @load="setH()">
+        <div class="col-4" id="modal_right" v-if="type === 'contact'">
+          <img id="modal_close_contact" @click="$emit('close-modal')" :src="require('@/assets/images/icons/002-close.png')" alt="Close Button">
+          <img :src="require('@/assets/images/popup-1.jpg')" class="col-8" id="modal_right_contact" alt="Contact Image" @load="setH()">
+        </div>
     </div>
     <div class="modal-backdrop fade show" :style="{ display : (show && 'block')|| 'none'}" v-on:click="$emit('close-modal')"/>
   </div>
@@ -105,6 +108,7 @@ export default {
       background: white;
       height: 100%;
       margin: 0;
+      position: relative;
     }
     #modal_right_contact{
       background: white;
@@ -116,6 +120,15 @@ export default {
     #modal_close{
       height: 44px;
       float: right;
+    }
+    #modal_close_contact{
+      height: 44px;
+      float: right;
+      width: auto;
+      position: absolute;
+      top: calc(var(--bs-gutter-x));
+      right: calc(var(--bs-gutter-x)*-1);
+      filter: invert(100%);
     }
     #modal_right_top{
       height: fit-content;
@@ -176,15 +189,21 @@ export default {
     }
     #contact_phone{
       font-size: 14px;
-      font-weight: lighter;
+      font-weight: bolder;
     }
     #contact_adress{
       font-size: 14px;
-      font-weight: lighter;
+      font-weight: bolder;
     }
-    #contact_mail{
-      font-size: 12px;
+    #contact_mail {
+      font-size: 16px;
       font-weight: bold;
+    }
+    #contact_from > input{
+      height: 5vh;
+    }
+    #contact_content > input{
+      height: 50vh;
     }
     #contact_send{
       font-size: 16px;
@@ -197,8 +216,14 @@ export default {
       padding-left: 45px;
       padding-right: 45px;
       padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 20px;
       width: fit-content;
       position: absolute;
-    right: 0;
+      right: 0;
+    }
+    #contact_send_button:hover {
+      background: #2B2A2C;
+      color: #8D8D8E;
     }
 </style>
