@@ -26,9 +26,7 @@ export default {
       modal: {
         show: false,
         type: '',
-        object: {
-          src: '',
-        },
+        object: {},
       },
     };
   },
@@ -46,7 +44,6 @@ export default {
       this.modal.type = type;
       if (this.modal.object !== undefined) this.modal.object = object;
       if (this.modal.type === 'project') this.modal.object.src = 'popup-2.jpg';
-      if (this.modal.type === 'contact') this.modal.object.src = 'popup-1.jpg';
       this.modal.show = true;
       // $('body').style.overflow = 'hidden'; // A debug
       document.getElementsByTagName('body')[0].style.overflow = 'hidden';
@@ -101,6 +98,6 @@ export default {
   }
   .btn-round{
     border : 2px solid black;
-    border-radius : 20px
+    border-radius : 30px;
   }
 </style>
