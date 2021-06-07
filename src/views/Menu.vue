@@ -1,6 +1,6 @@
 <template>
     <div class="row itm-center">
-        <div class="col col-xs-12 col-sm-12 col-md-6" id="profile">
+        <div class="col-12 col-xl-6" id="profile">
             <div class="row py-5">
                 <div class="w-unset" id="profile_photo">
                     <img
@@ -15,18 +15,18 @@
                 </div>
             </div>
         </div>
-        <div class="col col-xs-12 col-sm-12 col-md-6" id="menu">
+        <div class="col-12 col-xl-6" id="menu">
             <div class="row w-unset" id="menu-item">
-                <div class="col w-unset selected" id="menu_products">
+                <div class="py-sm-2 py-md-2 col w-unset selected" id="menu_products">
                     PROJETS
                 </div>
-                <div class="col w-unset" id="menu_about">
+                <div class="py-sm-2 py-md-2 col w-unset" id="menu_about">
                     A PROPOS
                 </div>
-                <div class="col w-unset" id="menu_blog">
+                <div class="py-sm-2 py-md-2 col w-unset" id="menu_blog">
                     BLOG
                 </div>
-                <div class="col w-unset btn-round" id="menu_contact" @click="$emit('open-modal', 'contact')">
+                <div class="py-sm-2 py-md-2 col w-unset btn-round" id="menu_contact" @click="$emit('open-modal', 'contact')">
                     CONTACT
                 </div>
             </div>
@@ -58,6 +58,9 @@ export default {
         text-decoration: underline;
         text-decoration-thickness: 3px;
         text-underline-position: under;
+    }
+    #menu_about{
+        white-space: nowrap;
     }
     #menu_contact{
         max-width: fit-content;

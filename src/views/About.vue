@@ -1,9 +1,9 @@
 <template>
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-6" id="about_left_pane">
+        <div class="col-12 col-xl-6" id="about_left_pane">
             <img src="@/assets/images/undraw_Designer_by46.svg" alt="Designer Image">
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-6" id="about_right_pane">
+        <div class="col-12 col-xl-6" id="about_right_pane">
             <p id="about_title">
                 à propos...
             </p>
@@ -46,21 +46,26 @@ export default {
         font-size: 45px;
         font-weight: bold;
         text-transform: uppercase;
+        margin: auto;
     }
     #about_subtitle {
         font-size: 72px;
         font-weight: bold;
         opacity: 15%;
         text-transform: uppercase;
+        white-space: nowrap;
     }
     #about_text {
         font-size: 15px;
         font-weight: lighter;
         inline-size: 74%;
         color: #6A696B;
+        margin: auto;
     }
     #about_contact{
         max-width: fit-content;
+        padding-top: 10px;
+        margin: auto;
     }
     #about_contact_btn{
         padding-left: 45px;

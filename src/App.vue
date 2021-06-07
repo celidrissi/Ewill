@@ -1,9 +1,9 @@
 <template>
   <Menu class="menu px-15" id="menu" @open-modal="openModal"/>
-  <Me class="px-5 px-15" id="me" @open-modal="openModal"/>
+  <Me class="py-5 px-15" id="me" @open-modal="openModal"/>
   <Projects class="py-5 px-15" id="projects" @open-modal="openModal"/>
   <About class="py-5 px-15" id="about" @open-modal="openModal"/>
-  <Modal id="modal" v-if="modal.show" :show="modal.show" @closeModal="closeModal" :type="modal.type" :object="modal.object"/>
+  <Modal id="modal" v-if="modal.show" :show="modal.show" @closeModal="closeModal" :type="modal.type" :object="modal.object" :overflow="modal.show && 'auto' || 'hidden'"/>
   <Blog id="blog"/>
   <Footer class="px-15" id="footer" @open-modal="openModal"/>
 </template>
@@ -41,19 +41,17 @@ export default {
   },
   methods: {
     openModal(type, object) {
-      this.modal.type = type;
-      if (this.modal.object !== undefined) this.modal.object = object;
-      if (this.modal.type === 'project') this.modal.object.src = 'popup-2.jpg';
+      this.modal.type = type; // Setup du type de modal
+      if (this.modal.object !== undefined) this.modal.object = object; // Modal de type 'Contact'
+      if (this.modal.type === 'project') this.modal.object.src = 'popup-2.jpg'; // Modal de type 'Projet'
+      // A noter : Pour la ligne Supérieure, 'popup-2.jpg' peut etre remplacé par object.src pour avoir l'image du projet
       this.modal.show = true;
-      // $('body').style.overflow = 'hidden'; // A debug
-      document.getElementsByTagName('body')[0].style.overflow = 'hidden';
     },
     closeModal() {
+      // RAZ du modal;
       this.modal.show = false;
       this.modal.type = '';
       this.modal.object = {};
-      // $('body').style.overflow = 'auto'; // A debug
-      document.getElementsByTagName('body')[0].style.overflow = 'auto';
     },
   },
 };
@@ -67,12 +65,15 @@ export default {
   }
   body {
     overflow: auto;
+    width: fit-content;
   }
   .menu {
     background-color: white;
     position: sticky;
     top: 0;
     z-index: 1;
+    box-shadow: 0px 5px 10px lightgrey;
+    padding-bottom: 1em;
   }
   .modal {
     margin: auto;

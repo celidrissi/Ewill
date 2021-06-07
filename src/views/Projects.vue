@@ -5,13 +5,12 @@
               <div id="project_filter_all" @click="show('All')">Tous</div>
               <div id="project_filter_mobile" @click="filtering('Mobile')">Mobile</div>
               <div id="project_filter_web" @click="filtering('Web')">Web</div>
-              <div id="project_filter_interaction" @click="filtering('Interaction')">
-                Interaction</div>
+              <div id="project_filter_interaction" @click="filtering('Interaction')">Interaction</div>
             </div>
         </div>
         <div class="row">
             <div v-for="project in projects" :key="'project' + project.id"
-                class="col col-xs-12 col-sm-12 col-md-4"
+                class="col-12 col-lg-4"
                 :class="{ 'd-none' : !project.show }">
                 <div class="card" @click="$emit('open-modal', 'project', projects[project.id - 1])">
                     <img
@@ -19,7 +18,7 @@
                         class="card-img-top"
                         :alt="project.title">
                     <div class="card-body">
-                        <p class="card-text">
+                        <p class="card-text" id="project_tags">
                             {{ project.subtitle }}
                         </p>
                         <h5 class="card-title" id="project_title">{{ project.title }}</h5>
@@ -130,8 +129,8 @@ export default {
     };
   },
   methods: {
-    filtering(name) {
-      this.hide();
+    filtering(name) { // Fontion de filtrage en fonction du tag
+      this.hide(); // On cache tout
       // eslint-disable-next-line no-restricted-syntax
       for (const [index, value] of this.projects.entries()) {
         if ((value.tags).find((element) => element === name)) {
@@ -139,16 +138,16 @@ export default {
         }
       }
     },
-    hide() {
+    hide() { // Fonction de dissimulation de projets (filtrage)
       for (let i = 0; i < this.projects.length; i += 1) {
         this.projects[i].show = false;
       }
     },
-    show(index) {
+    show(index) { // Fonction d'affichahe de projets (filtrage)
       for (let i = 0; i < this.projects.length; i += 1) {
         if (index === 'All') {
-          this.projects[i].show = true;
-        } else if (this.projects[i].id === index + 1) this.projects[i].show = true;
+          this.projects[i].show = true; // On affiche tout
+        } else if (this.projects[i].id === index + 1) this.projects[i].show = true; // On affiche l'index fournit
       }
     },
   },
@@ -157,7 +156,7 @@ export default {
 
 <style scoped>
     .card {
-        margin: 25px;
+      margin: 25px;
     }
     .card:hover{
       transform: scale(1.05);
@@ -169,6 +168,9 @@ export default {
     #project_filter > div{
       display: inline-block;
       margin: 10px;
+    }
+    #project_tags{
+      font-size: 12px;
     }
     #project_title{
       float: left;

@@ -28,7 +28,7 @@
         </div>
         <div class="row px-15">
           <div v-for="article in articles" :key="'article' + article.id"
-            class="col col-xs-12 col-sm-12 col-md-4"
+            class="col-12 col-lg-6 col-xl-4 py-5"
             id="blog_content_items">
             <div class="card">
               <div id="card_date">
@@ -100,8 +100,8 @@ export default {
     font-weight: normal;
     color: #8D8D8E;
     text-align: center;
-    padding-right: 300px !important;
-    padding-left: 300px !important;
+    padding-right: 10% !important;
+    padding-left: 10% !important;
     padding-top: 50px;
     padding-bottom: 50px;
   }
